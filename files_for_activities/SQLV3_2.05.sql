@@ -19,12 +19,22 @@ select distinct (last_name) from sakila.actor;
 
 -- 6 Since how many days has the company been operating (check DATEDIFF() function)?
 SELECT min(rental_date) FROM sakila.rental;
+select max(rental_date) FROM sakila.rental;
+SELECT DATEDIFF("2006-02-14","2005-05-24");
 
 -- 7 Show rental info with additional columns month and weekday. Get 20 results.
-
+SELECT rental_date ,monthname(rental_date) as "monthinfo"
+FROM sakila.rental
+LIMIT 10;
+SELECT rental_date ,DAYNAME(rental_date) as "day_info"
+FROM sakila.rental;
+LIMIT 10;
 -- 8 Add an additional column day_type with values 'weekend' and 'workday' depending on the rental day of the week.
+SELECT rental_date ,DAYNAME(rental_date) as "day_type"
+FROM sakila.rental;
 
--- 9 
+-- 9 Get release years
+SELECT release_year FROM sakila.film;
 
 -- 10 Get all films with ARMAGEDDON in the title.
 SELECT * FROM sakila.film
